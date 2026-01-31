@@ -20,9 +20,9 @@ def get_data():
     return response.json()
 
 def monitor():
+    global last_post_id
     
     current_posts = get_data().get("posts", [])
-    
     current_ids = [p["id"] for p in current_posts]
     
     if not last_post_id in current_ids:
@@ -32,9 +32,7 @@ def monitor():
         return True
     
     return False
-
-
-        
+ 
 
 def main():
 
